@@ -1,4 +1,3 @@
-from os import path
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor, VotingRegressor
@@ -7,13 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
-df_base_name = path.join(path.dirname(__file__), 'airbnb_clean.csv')
-df_base = pd.read_csv(df_base_name).set_index("id")
-
-df_am_name = path.join(path.dirname(__file__),
-                       'airbnb_amenities_clean.csv')
-df_ammenities = pd.read_csv(df_am_name).set_index("id")
-
+df_base = pd.read_csv('airbnb_clean.csv').set_index("id")
+df_ammenities = pd.read_csv('airbnb_amenities_clean.csv').set_index("id")
 df = pd.concat([df_base, df_ammenities], axis=1)
 
 X = df.drop(columns=["log_price", "host_since", "host_has_profile_pic", "city",
