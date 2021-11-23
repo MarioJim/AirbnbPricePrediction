@@ -1,0 +1,15 @@
+Wilcoxon rank sums test with a greater hypothesis
+                           RandomForestRegressor  GradientBoostingRegressor  LinearRegression  KNeighborsRegressor  VotingRegressor
+RandomForestRegressor           0.50000000000000           0.99999999998564  0.99999999998564     0.99999999998564 0.99999999998564
+GradientBoostingRegressor       0.00000000001436           0.50000000000000  0.99999999998564     0.99999999998564 0.99999991000660
+LinearRegression                0.00000000001436           0.00000000001436  0.50000000000000     0.00000000022015 0.00000000001436
+KNeighborsRegressor             0.00000000001436           0.00000000001436  0.99999999977985     0.50000000000000 0.00000000001436
+VotingRegressor                 0.00000000001436           0.00000008999340  0.99999999998564     0.99999999998564 0.50000000000000
+
+Wilcoxon rank sums test with a less hypothesis
+                           RandomForestRegressor  GradientBoostingRegressor  LinearRegression  KNeighborsRegressor  VotingRegressor
+RandomForestRegressor           0.50000000000000           0.00000000001436  0.00000000001436     0.00000000001436 0.00000000001436
+GradientBoostingRegressor       0.99999999998564           0.50000000000000  0.00000000001436     0.00000000001436 0.00000008999340
+LinearRegression                0.99999999998564           0.99999999998564  0.50000000000000     0.99999999977985 0.99999999998564
+KNeighborsRegressor             0.99999999998564           0.99999999998564  0.00000000022015     0.50000000000000 0.99999999998564
+VotingRegressor                 0.99999999998564           0.99999991000660  0.00000000001436     0.00000000001436 0.50000000000000

@@ -36,17 +36,22 @@
 
 
 \begin{abstract}
-  TODO
+En los últimos años han surgido plataformas en las cuales anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes; anfitriones y huéspedes pueden valorarse mutuamente, como referencia para futuros usuarios. Una de las primeras, y la más exitosa en Estados Unidos es AirBnB, fundada en el año 2008. En este proyecto se utilizarán técnicas de aprendizaje automático con el fin de predecir y optimizar una serie de métricas sobre propiedades, utilizando un dataset de más de 70 mil propiedades listadas desde noviembre de 2008 hasta octubre 2017 en esta plataforma.
 \end{abstract}
 
 \maketitle
 
 \section{Introducción}
-TODO
+El precio de cualquier producto o servicio se ve afectado por variables como oferta, demanda, inflación en el país, etc. Para bienes inmuebles esto es mucho más complejo, ya que entran en consideración factores como la zona donde se encuentra la propiedad, el espacio total que abarca, el número de habitaciones, etc. Cada una de estas variables puede o no afectar a las demás y juntas caracterizan un sistema digno de ser analizado.
+
 
 
 \section{Conceptos previos}
-TODO
+\begin{itemize}
+  \item Conocimientos básicos de estadística
+  \item Programación básica en el lenguaje Python
+  \item Conocimientos sobre librerías como \texttt{scikit-learn},\\\texttt{pandas} y \texttt{numpy}
+\end{itemize}
 
 
 \section{Metodología}
@@ -69,9 +74,49 @@ TODO
 \appendix
 
 \begin{figure*}
-  \section{Código}
-  \label{appendix:py}
-  % \inputminted{python}{}
+  \section{Código de ejecución de los regresores}
+  \label{appendix:regs}
+  \inputminted[lastline=60]{python}{/home/mario/git/MarioJim/AirbnbPricePrediction/generate_mses.py}
+\end{figure*}
+
+\begin{figure*}
+  \section{Salida de ejecución de los regresores}
+  \label{appendix:regs_out}
+  \inputminted{text}{/home/mario/git/MarioJim/AirbnbPricePrediction/output_generate_mses.txt}
+\end{figure*}
+
+\begin{figure*}
+  \section{Código de prueba de Wilcoxon}
+  \label{appendix:wilc}
+  \inputminted{python}{/home/mario/git/MarioJim/AirbnbPricePrediction/wilcoxon_test.py}
+\end{figure*}
+
+\begin{figure*}
+\section{Salida de ejecución de prueba de Wilcoxon}
+\label{appendix:wilc_out}
+
+\subsection{Wilcoxon rank sums test with a greater hypothesis}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{}                 & \textbf{RandomForest} & \textbf{GradientBoosting} & \textbf{LinearRegression} & \textbf{KNeighbors} & \textbf{VotingRegressor} \\ \hline
+\textbf{RandomForest}     & 0.5                   & 0.99999999998564          & 0.99999999998564          & 0.99999999998564    & 0.99999999998564         \\ \hline
+\textbf{GradientBoosting} & 0.00000000001436      & 0.5                       & 0.99999999998564          & 0.99999999998564    & 0.99999991000660         \\ \hline
+\textbf{LinearRegression} & 0.00000000001436      & 0.00000000001436          & 0.5                       & 0.00000000022015    & 0.00000000001436         \\ \hline
+\textbf{KNeighbors}       & 0.00000000001436      & 0.00000000001436          & 0.99999999977985          & 0.5                 & 0.00000000001436         \\ \hline
+\textbf{VotingRegressor}  & 0.00000000001436      & 0.00000008999340          & 0.99999999998564          & 0.99999999998564    & 0.5                      \\ \hline
+\end{tabular}
+
+\subsection{Wilcoxon rank sums test with a less hypothesis}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{}                 & \textbf{RandomForest} & \textbf{GradientBoosting} & \textbf{LinearRegression} & \textbf{KNeighbors} & \textbf{VotingRegressor} \\ \hline
+\textbf{RandomForest}     & 0.5                   & 0.00000000001436          & 0.00000000001436          & 0.00000000001436    & 0.00000000001436         \\ \hline
+\textbf{GradientBoosting} & 0.99999999998564      & 0.5                       & 0.00000000001436          & 0.00000000001436    & 0.00000008999340         \\ \hline
+\textbf{LinearRegression} & 0.99999999998564      & 0.99999999998564          & 0.5                       & 0.99999999977985    & 0.99999999998564         \\ \hline
+\textbf{KNeighbors}       & 0.99999999998564      & 0.99999999998564          & 0.00000000022015          & 0.5                 & 0.99999999998564         \\ \hline
+\textbf{VotingRegressor}  & 0.99999999998564      & 0.99999991000660          & 0.00000000001436          & 0.00000000001436    & 0.5                      \\ \hline
+\end{tabular}
+
 \end{figure*}
 
 \end{document}

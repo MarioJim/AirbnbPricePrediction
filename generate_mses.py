@@ -50,14 +50,14 @@ for i in range(30):
     kn_pred = k_neighbors.predict(X_test)
     kn_mses.append(mean_squared_error(y_test, kn_pred))
 
-    voting_reg = VotingRegressor(
-        [("RF", random_forest), ("GB", gradient_boosting), ("KN", k_neighbors), ("LN", linear_reg)], n_jobs=-1)
+    voting_reg = VotingRegressor([("RF", random_forest), ("GB", gradient_boosting),
+                                  ("KN", k_neighbors), ("LN", linear_reg)], n_jobs=-1)
     voting_reg.fit(X_train, y_train)
     vr_pred = voting_reg.predict(X_test)
     vr_mses.append(mean_squared_error(y_test, vr_pred))
 
-    print(
-        f"{rf_mses[i]:2.5f} {gb_pred[i]:2.5f} {lr_pred[i]:2.5f} {vr_pred[i]:2.5f}")
+    print(f"{rf_mses[i]:2.5f} {gb_mses[i]:2.5f}", end=" ")
+    print(f"{lr_mses[i]:2.5f} {kn_mses[i]:2.5f} {vr_mses[i]:2.5f}")
 
 
 pathlib.Path('mses').mkdir(parents=True, exist_ok=True)
