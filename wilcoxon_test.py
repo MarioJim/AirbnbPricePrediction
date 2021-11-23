@@ -5,7 +5,7 @@ from scipy.stats import ranksums
 
 mses_dict = {}
 
-for mses in Path('mses').iterdir():
+for mses in Path('mses_2').iterdir():
     if mses.is_file():
         mses_dict[mses.stem] = np.loadtxt(mses)
 
